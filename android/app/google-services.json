@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "382066247512",
+    "project_id": "grape-play-mobile",
+    "storage_bucket": "grape-play-mobile.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:382066247512:android:2d67b07f7fe62e5639472d",
+        "android_client_info": {
+          "package_name": "com.grapeplay.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "382066247512-tbvonprnibum19unshckdobee8rfbu85.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.grapeplay.android",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "382066247512-4boq2705aa8vvfnru5uss7k8dtb2sr50.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCkGeS7PAWMTL7toobRzHlg_-jkiaiAvc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "382066247512-4boq2705aa8vvfnru5uss7k8dtb2sr50.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
