@@ -79,7 +79,7 @@ android {
 
     namespace "com.grapeplay"
     defaultConfig {
-        applicationId "com.grapeplay"
+        applicationId "com.grapeplay.android"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
