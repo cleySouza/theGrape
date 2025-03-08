@@ -2,6 +2,8 @@ import UIKit
 import React
 import React_RCTAppDelegate
 import ReactAppDependencyProvider
+import FirebaseCore
+import GoogleSignIn
 
 @main
 class AppDelegate: RCTAppDelegate {
@@ -9,11 +11,21 @@ class AppDelegate: RCTAppDelegate {
     self.moduleName = "grapeplay"
     self.dependencyProvider = RCTAppDependencyProvider()
 
+    FirebaseApp.configure()
     // You can add your custom initial props in the dictionary below.
     // They will be passed down to the ViewController used by React Native.
     self.initialProps = [:]
 
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+  }
+
+  override func application(
+    _ app: UIApplication,
+    open url: URL,
+    options: [UIApplication.OpenURLOptionsKey: Any] = [:]
+  ) -> Bool {
+    // Google Sign-In
+    return GIDSignIn.sharedInstance.handle(url)
   }
 
   override func sourceURL(for bridge: RCTBridge) -> URL? {

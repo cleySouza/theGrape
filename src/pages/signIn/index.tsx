@@ -32,6 +32,7 @@ export function SignIn({navigation}: Props) {
 
       navigation.navigate('dashboard');
     } catch (error) {
+      console.log(error);
       Alert.alert('Erro ao fazer login: ', String(error));
     }
   }
