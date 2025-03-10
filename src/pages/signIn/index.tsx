@@ -1,39 +1,26 @@
-import {Container} from '../../components/app';
+import {Button, Container} from '../../components/app';
 import Logo from '../../assets/logoLogin.svg';
 import LogoIOS from '../../assets/iOS.svg';
 import LogoAndroid from '../../assets/android.svg';
-import {Alert, Platform, Text, TouchableOpacity, View} from 'react-native';
+import {Alert, Platform, Text, View} from 'react-native';
 import {theme} from '../../themes';
-import auth from '@react-native-firebase/auth';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {useAuth} from '../../hooks';
 
 interface Props {
   navigation: any;
 }
 
 export function SignIn({navigation}: Props) {
+  const {signInWithGoogle} = useAuth();
   const platform = Platform.OS === 'ios' ? true : false;
 
   async function handleSignIn() {
     try {
-      await GoogleSignin.hasPlayServices();
-      const {data} = await GoogleSignin.signIn();
-      const token = data?.idToken;
-
-      if (!token) {
-        throw new Error('ID Token não encontrado!');
-      }
-
-      // Criar credencial para o Firebase
-      const googleCredential = auth.GoogleAuthProvider.credential(token);
-
-      // Fazer login com Firebase
-      await auth().signInWithCredential(googleCredential);
-
+      const userData = await signInWithGoogle();
+      console.log(userData);
       navigation.navigate('dashboard');
     } catch (error) {
-      console.log(error);
-      Alert.alert('Erro ao fazer login: ', String(error));
+      Alert.alert('Erro ao fazer o login', (error as Error).message);
     }
   }
 
@@ -84,28 +71,14 @@ export function SignIn({navigation}: Props) {
             alignItems: 'center',
             justifyContent: 'space-evenly',
           }}>
-          <TouchableOpacity
-            onPress={handleSignIn}
-            style={{
-              padding: 6,
-              borderRadius: 5,
-              backgroundColor: theme.colors.white,
-              alignItems: 'center',
-              width: Platform.OS === 'ios' ? '40%' : '100%',
-            }}>
+          <Button onPress={handleSignIn}>
             <LogoAndroid />
-          </TouchableOpacity>
+          </Button>
+
           {platform && (
-            <TouchableOpacity
-              style={{
-                padding: 6,
-                borderRadius: 5,
-                backgroundColor: theme.colors.white,
-                alignItems: 'center',
-                width: '40%',
-              }}>
+            <Button onPress={handleSignIn}>
               <LogoIOS />
-            </TouchableOpacity>
+            </Button>
           )}
         </View>
       </View>
